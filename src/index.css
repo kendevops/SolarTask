@@ -17,3 +17,13 @@
   -moz-osx-font-smoothing: grayscale; */
 }
 
+.svg-inactive {
+  fill: gray; /* Default color when not active */
+  filter: grayscale(1); /* Optional grayscale for inactive state */
+}
+
+/* Active state for SVG images */
+.svg-active {
+  fill: #3b82f6; /* Blue color when active */
+  filter: none; /* Removes grayscale when active */
+}

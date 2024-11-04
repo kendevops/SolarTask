@@ -18,6 +18,8 @@ interface Transaction {
 interface DashboardContextProps {
   cards: Card[];
   transactions: Transaction[];
+  pageTitle: string;
+  setPageTitle: (title: string) => void;
 }
 
 const AppContext = createContext<DashboardContextProps | undefined>(undefined);
@@ -26,7 +28,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [cards, setCards] = useState<Card[]>([]);
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
+      const [pageTitle, setPageTitle] = useState("Overview");
+
 
   useEffect(() => {
     // Mock fetching data
@@ -57,7 +61,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   return (
-    <AppContext.Provider value={{ cards, transactions }}>
+    <AppContext.Provider
+      value={{ cards, transactions, pageTitle, setPageTitle }}
+    >
       {children}
     </AppContext.Provider>
   );
