@@ -15,6 +15,7 @@ export default {
         light: "#E6EFF5",
         accent: " #B1B1B1",
         grey: "#E6EFF5",
+        textPrimary: "#343C6A",
       },
     },
   },

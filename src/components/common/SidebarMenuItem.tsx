@@ -1,12 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { useApp } from "../../context/AppContext";
 
 interface SidebarItemProps {
   name: string;
+  title: string;
   icon: React.ReactNode;
   path: string;
 }
 
-const SidebarMenuItem = ({ name, icon, path }: SidebarItemProps) => {
+const SidebarMenuItem = ({ name, title, icon, path }: SidebarItemProps) => {
+  const { setPageTitle } = useApp();
   return (
     <NavLink
       to={path}
@@ -17,6 +20,7 @@ const SidebarMenuItem = ({ name, icon, path }: SidebarItemProps) => {
             : "text-accent"
         }`
       }
+      onClick={() => setPageTitle(title)}
     >
       <div className="mx-3 h-[25px] w-[25px]">{icon}</div>
       <span>{name}</span>
