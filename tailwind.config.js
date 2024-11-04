@@ -13,6 +13,7 @@ export default {
         primary: "#F5F7FA",
         secondary: "#232323",
         light: "#E6EFF5",
+        accent: " #B1B1B1",
         grey: "#E6EFF5",
       },
     },

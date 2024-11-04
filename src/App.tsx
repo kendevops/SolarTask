@@ -18,7 +18,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/setting" element={<Settings />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Layout>
