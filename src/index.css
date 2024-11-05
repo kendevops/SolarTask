@@ -2,19 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .text-10 {
+    @apply text-[10px] leading-[16px];
+  }
+
+  .text-12 {
+    @apply text-[12px] leading-[14.4px];
+  }
+
+  .text-14 {
+    @apply text-[14px] leading-[22px];
+  }
+
+  .text-15 {
+    @apply text-[15px] leading-[18px];
+  }
+
+  .text-16 {
+    @apply text-[16px] leading-[26px];
+  }
+
+  .text-17 {
+    @apply text-[17px] leading-[21px];
+  }
+
+  .text-18 {
+    @apply text-[18px] leading-[24px];
+  }
+
+  .text-20 {
+    @apply text-[20px] leading-[24px];
+  }
+  .text-22 {
+    @apply text-[22px] leading-[26.4px];
+  }
+
+  .text-24 {
+    @apply text-[24px] leading-[32px];
+  }
+
+  .text-26 {
+    @apply text-[26px] leading-[34px];
+  }
+
+  .text-30 {
+    @apply text-[30px] leading-[40px];
+  }
+
+  .text-32 {
+    @apply text-[2rem] leading-[2.5rem];
+  }
+
+  .text-36 {
+    @apply text-[36px] leading-[44px];
+  }
+
+  .text-40 {
+    @apply text-[40px] leading-[52px];
+  }
+}
+
 :root {
-  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Lato", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
 }
 
 .svg-inactive {
