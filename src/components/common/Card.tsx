@@ -47,7 +47,7 @@ const Card = ({
             <img src={cardChip} alt="Card Chip" className="w-9 h-9" />
           )}
         </div>
-        <div className="flex gap-14 justify-start items-center">
+        <div className="flex gap-14 justify-start items-center mb-6">
           <div>
             <p
               className={`text-12 uppercase ${
