@@ -14,7 +14,7 @@ export default {
         secondary: "#232323",
         light: "#E6EFF5",
         accent: " #B1B1B1",
-        grey: "#E6EFF5",
+        grey: "#EDF1F7",
         textPrimary: "#343C6A",
         textSecondary: "#718EBF",
         cardAccent: "#343C6A",

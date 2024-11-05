@@ -1,5 +1,7 @@
+import BalanceHistoryChart from "./BalanceHistoryChart";
 import ExpenseStatistics from "./ExpenseStatistics";
 import MyCards from "./MyCards";
+import QuickTransfer from "./QuickTransfer";
 import RecentTransactions from "./RecentTransactions";
 import WeeklyActivityChart from "./WeeklyActivityChart";
 
@@ -14,10 +16,10 @@ const Dashboard = () => {
         <WeeklyActivityChart />
         <ExpenseStatistics />
       </div>
-      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
         <QuickTransfer />
         <BalanceHistoryChart />
-      </div> */}
+      </div>
     </div>
   );
 };
