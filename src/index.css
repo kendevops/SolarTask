@@ -16,11 +16,11 @@
   }
 
   .text-15 {
-    @apply text-[15px] leading-[18px];
+    @apply text-[15px] leading-[18.15px];
   }
 
   .text-16 {
-    @apply text-[16px] leading-[26px];
+    @apply text-[16px] leading-[19.36px];
   }
 
   .text-17 {
