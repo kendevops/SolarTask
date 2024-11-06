@@ -41,3 +41,4 @@ The following assumptions where made while developing the application.
 
 - Deployed to vercel by few clicks in connection with my Github account.
 
+- Assumed i am working with a team so i utilized branching and Pull Requests for creating a new feature, updating or fixing bugs.
