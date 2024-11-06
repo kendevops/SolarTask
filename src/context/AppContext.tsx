@@ -1,36 +1,37 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+} from "react";
+import {
+  getCards,
+  getTransactions,
+  Card,
+  Transaction as ApiTransaction,
+} from "../api";
 import { BsWindowStack } from "react-icons/bs";
 import { PiPaypalLogoBold } from "react-icons/pi";
 import { RiExchangeDollarLine } from "react-icons/ri";
 
-interface Card {
-  id: number;
-  balance: number;
-  cardHolder: string;
-  cardNumber: string;
-  expiry: string;
-  plain: boolean;
-}
-
-interface Transaction {
-  id: number;
-  description: string;
-  date: string;
-  amount: number;
+interface Transaction extends Omit<ApiTransaction, "iconName" | "classType"> {
   icon: JSX.Element;
   className: string;
 }
 
-interface DashboardContextProps {
+interface AppContextProps {
   cards: Card[];
   transactions: Transaction[];
   pageTitle: string;
   setPageTitle: (title: string) => void;
   toggleSidebar: boolean;
   setToggleSidebar: (toggle: boolean) => void;
+  loadingCards: boolean;
+  loadingTransactions: boolean;
 }
 
-const AppContext = createContext<DashboardContextProps | undefined>(undefined);
+const AppContext = createContext<AppContextProps | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -39,68 +40,76 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [pageTitle, setPageTitle] = useState("Overview");
   const [toggleSidebar, setToggleSidebar] = useState(false);
+  const [loadingCards, setLoadingCards] = useState(true);
+  const [loadingTransactions, setLoadingTransactions] = useState(true);
+
+  const contextValue = useMemo(
+    () => ({
+      cards,
+      transactions,
+      pageTitle,
+      setPageTitle,
+      toggleSidebar,
+      setToggleSidebar,
+      loadingCards,
+      loadingTransactions,
+    }),
+    [
+      cards,
+      transactions,
+      pageTitle,
+      setPageTitle,
+      toggleSidebar,
+      setToggleSidebar,
+      loadingCards,
+      loadingTransactions,
+    ]
+  );
 
   useEffect(() => {
-    // Mock fetching data
-    setCards([
-      {
-        id: 1,
-        balance: 5756,
-        cardHolder: "Eddy Cusuma",
-        cardNumber: "3778 **** **** 1234",
-        expiry: "12/22",
-        plain: false,
-      },
-      {
-        id: 2,
-        balance: 5756,
-        cardHolder: "Eddy Cusuma",
-        cardNumber: "3778 **** **** 1234",
-        expiry: "12/22",
-        plain: true,
-      },
-    ]);
-    setTransactions([
-      {
-        icon: <BsWindowStack className="w-7 h-7" />,
-        description: "Deposit from my Card",
-        date: "28 January 2021",
-        amount: -850,
-        className: "bg-[#FFF5D9] text-[#FFBB38]",
-        id: 1,
-      },
-      {
-        icon: <PiPaypalLogoBold className="w-7 h-7" />,
-        description: "Deposit Paypal",
-        date: "25 January 2021",
-        amount: 2500,
-        className: "bg-[#E7EDFF] text-[#396AFF]",
-        id: 2,
-      },
-      {
-        icon: <RiExchangeDollarLine className="w-7 h-7" />,
-        description: "Jemi Wilson",
-        date: "21 January 2021",
-        amount: 5400,
-        className: "bg-[#DCFAF8] text-[#16DBCC]",
-        id: 3,
-      },
-    ]);
+    const fetchCards = async () => {
+      setLoadingCards(true);
+      const cardsData = await getCards();
+      setCards(cardsData);
+      setLoadingCards(false);
+    };
+
+    const fetchTransactions = async () => {
+      setLoadingTransactions(true);
+      const transactionsData = await getTransactions();
+      
+        // I am Mapping iconName and classType to actual icon components
+      const iconMap: { [key: string]: JSX.Element } = {
+        BsWindowStack: <BsWindowStack className="w-7 h-7" />,
+        PiPaypalLogoBold: <PiPaypalLogoBold className="w-7 h-7" />,
+        RiExchangeDollarLine: <RiExchangeDollarLine className="w-7 h-7" />,
+      };
+
+      const classMap: { [key: string]: string } = {
+        "card-deposit": "bg-[#E7EDFF] text-[#396AFF]",
+        "paypal-deposit": "bg-[#FFF5D9] text-[#FFBB38]",
+        withdrawal: "bg-[#DCFAF8] text-[#16DBCC]",
+      };
+
+      const transactionsWithIconsAndClasses: Transaction[] =
+        transactionsData.map((transaction) => ({
+          ...transaction,
+          icon: iconMap[transaction.iconName] || (
+            <BsWindowStack className="w-7 h-7" />
+          ),
+          className: classMap[transaction.classType] || "default-class",
+        }));
+
+      setTransactions(transactionsWithIconsAndClasses);
+      setLoadingTransactions(false);
+    };
+
+    fetchCards();
+    fetchTransactions();
   }, []);
 
   return (
-    <AppContext.Provider
-      value={{
-        cards,
-        transactions,
-        pageTitle,
-        setPageTitle,
-        toggleSidebar,
-        setToggleSidebar,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 };
 

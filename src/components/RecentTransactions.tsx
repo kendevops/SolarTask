@@ -7,7 +7,7 @@ const RecentTransactions = () => {
 
   return (
     <CardContainer title="Recent Transactions">
-      <div className="bg-white rounded-3xl p-4">
+      <div className="bg-white rounded-3xl p-4 max-h-60 overflow-y-auto hide-scrollbar">
         {transactions.map((transaction) => (
           <TransactionItem
             key={transaction.id}

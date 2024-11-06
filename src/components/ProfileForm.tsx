@@ -133,7 +133,7 @@ const ProfileForm = () => {
         <div className="md:col-span-2 flex justify-end">
           <button
             type="submit"
-            className="px-6 py-2 bg-black text-white rounded-lg"
+            className="px-8 py-2 bg-secondary text-white rounded-lg hover:bg-black hover:text-primary"
           >
             Save
           </button>

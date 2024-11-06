@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,9 +7,9 @@ import {
 } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import Layout from "./components/Layout";
-import Dashboard from "./components/Dashboard";
-import Settings from "./components/Settings";
-import CreditCards from "./components/CreditCards";
+const Dashboard = React.lazy(() => import("./components/Dashboard"));
+const Settings = React.lazy(() => import("./components/Settings"));
+const CreditCards = React.lazy(() => import("./components/CreditCards"));
 
 import "./App.css";
 
@@ -17,12 +18,14 @@ function App() {
     <AppProvider>
       <Router>
         <Layout>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/credit-cards" element={<CreditCards />} />
-            <Route path="/setting" element={<Settings />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/credit-cards" element={<CreditCards />} />
+              <Route path="/setting" element={<Settings />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </Suspense>
         </Layout>
       </Router>
     </AppProvider>
