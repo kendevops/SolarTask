@@ -7,8 +7,16 @@
     @apply text-[10px] leading-[16px];
   }
 
+  .text-11 {
+    @apply text-[11px] leading-[13.2px];
+  }
+
   .text-12 {
     @apply text-[12px] leading-[14.4px];
+  }
+
+  .text-13 {
+    @apply text-[13px] leading-[15.6px];
   }
 
   .text-14 {
@@ -28,12 +36,13 @@
   }
 
   .text-18 {
-    @apply text-[18px] leading-[24px];
+    @apply text-[18px] leading-[21.78px];
   }
 
   .text-20 {
     @apply text-[20px] leading-[24px];
   }
+
   .text-22 {
     @apply text-[22px] leading-[26.4px];
   }
@@ -42,24 +51,8 @@
     @apply text-[24px] leading-[32px];
   }
 
-  .text-26 {
-    @apply text-[26px] leading-[34px];
-  }
-
-  .text-30 {
-    @apply text-[30px] leading-[40px];
-  }
-
-  .text-32 {
-    @apply text-[2rem] leading-[2.5rem];
-  }
-
-  .text-36 {
-    @apply text-[36px] leading-[44px];
-  }
-
-  .text-40 {
-    @apply text-[40px] leading-[52px];
+  .text-28 {
+    @apply text-[28px] leading-[34px];
   }
 }
 
@@ -69,13 +62,17 @@
   font-weight: 400;
 }
 
-.svg-inactive {
-  fill: gray; /* Default color when not active */
-  filter: grayscale(1); /* Optional grayscale for inactive state */
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-/* Active state for SVG images */
-.svg-active {
-  fill: #3b82f6; /* Blue color when active */
-  filter: none; /* Removes grayscale when active */
+/* Hide scrollbar for Internet Explorer, Edge, and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
 }

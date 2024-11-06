@@ -1,17 +1,25 @@
 import { useApp } from "../context/AppContext";
+import { NavLink } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { IoIosSettings, IoMdNotificationsOutline } from "react-icons/io";
+import { FaBars } from "react-icons/fa";
+
 import profile from "../assets/profile.png";
 
 const TopBar = () => {
-  const { pageTitle } = useApp();
+  const { pageTitle, setToggleSidebar } = useApp();
 
   return (
-    <div className="w-full h-[101px] border-b border-b-light bg-white px-10 py-7">
+    <div className="w-full md:border-b md:border-b-light bg-white p-5 md:px-10 md:py-7">
       <div className="flex justify-between items-center">
-        <h1 className="text-textPrimary text-2xl font-semibold">{pageTitle}</h1>
+        <div className="flex lg:hidden" onClick={() => setToggleSidebar(true)}>
+          <FaBars className="w-5 h-5 md:w-8 md:h-8 text-textPrimary" />
+        </div>
+        <h1 className="text-textPrimary font-inter font-semibold text-20 md:text-28">
+          {pageTitle}
+        </h1>
         <div className="flex items-center space-x-4 gap-4">
-          <div className="relative">
+          <div className="relative hidden md:flex">
             <input
               type="text"
               placeholder="Search for something"
@@ -19,11 +27,14 @@ const TopBar = () => {
             />
             <IoSearch className="absolute left-3 top-4 text-[#718EBF]" />
           </div>
-          <button className="flex justify-center items-center rounded-full bg-primary w-[50px] h-[50px]">
-            <IoIosSettings className="text-[#718EBF] w-[25px] h-[25px]" />
-          </button>
-          <button className="flex justify-center items-center rounded-full bg-primary w-[50px] h-[50px]">
-            <IoMdNotificationsOutline className="text-[#396AFF] w-[25px] h-[25px]" />
+          <NavLink
+            to={"/setting"}
+            className="hidden justify-center items-center rounded-full bg-primary w-13 h-13 hover:bg-light lg:flex"
+          >
+            <IoIosSettings className="text-[#718EBF] w-6.5 h-6.5" />
+          </NavLink>
+          <button className="hidden justify-center items-center rounded-full bg-primary w-13 h-13 hover:bg-light lg:flex">
+            <IoMdNotificationsOutline className="text-[#396AFF] w-6.5 h-6.5" />
           </button>
           <img
             src={profile}
@@ -31,6 +42,14 @@ const TopBar = () => {
             className="w-[60px] h-[60px] rounded-full"
           />
         </div>
+      </div>
+      <div className="relative flex mt-4 w-full md:hidden">
+        <input
+          type="text"
+          placeholder="Search for something"
+          className="w-full px-10 py-3 rounded-full bg-primary border border-transparent focus:border-secondary focus:outline-none"
+        />
+        <IoSearch className="absolute left-3 top-4 text-[#718EBF]" />
       </div>
     </div>
   );

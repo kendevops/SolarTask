@@ -33,7 +33,7 @@ const WeeklyActivityChart = () => {
       },
       {
         label: "Deposit",
-        data: [400, 200, 300, 400, 480, 400, 300],
+        data: [300, 200, 300, 400, 480, 400, 300],
         backgroundColor: "#396AFF",
         borderRadius: 30,
         borderSkipped: false,

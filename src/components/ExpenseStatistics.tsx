@@ -38,7 +38,7 @@ const ExpenseStatistics = () => {
         },
         color: "#fff",
         font: {
-          size: 14,
+          size: 12,
           weight: "bold" as const,
           family: "inter",
         },
