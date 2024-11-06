@@ -17,6 +17,7 @@ export default {
         grey: "#EDF1F7",
         textPrimary: "#343C6A",
         textSecondary: "#718EBF",
+        borderPrimary: "#DFEAF2",
       },
       fontFamily: {
         lato: ["Lato", "sans-serif"],
