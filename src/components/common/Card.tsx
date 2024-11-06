@@ -1,3 +1,4 @@
+import React from "react";
 import { formatCurrency } from "../../utils/FormatCurrency";
 import cardChip from "../../assets/chipCard.png";
 import cardChip2 from "../../assets/chipCard2.png";
@@ -118,4 +119,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default React.memo(Card);

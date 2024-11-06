@@ -1,10 +1,11 @@
-import BalanceHistoryChart from "./BalanceHistoryChart";
-import ExpenseStatistics from "./ExpenseStatistics";
+import React, { Suspense } from "react";
 import MyCards from "./MyCards";
 import QuickTransfer from "./QuickTransfer";
 import RecentTransactions from "./RecentTransactions";
-import WeeklyActivityChart from "./WeeklyActivityChart";
 
+const WeeklyActivityChart = React.lazy(() => import("./WeeklyActivityChart"));
+const ExpenseStatistics = React.lazy(() => import("./ExpenseStatistics"));
+const BalanceHistoryChart = React.lazy(() => import("./BalanceHistoryChart"));
 const Dashboard = () => {
   return (
     <>
@@ -13,12 +14,18 @@ const Dashboard = () => {
         <RecentTransactions />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
-        <WeeklyActivityChart />
-        <ExpenseStatistics />
+        <Suspense fallback={<div>Loading Weekly Activity...</div>}>
+          <WeeklyActivityChart />
+        </Suspense>
+        <Suspense fallback={<div>Loading Expense Statistics...</div>}>
+          <ExpenseStatistics />
+        </Suspense>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
         <QuickTransfer />
-        <BalanceHistoryChart />
+        <Suspense fallback={<div>Loading Balance History...</div>}>
+          <BalanceHistoryChart />
+        </Suspense>
       </div>
     </>
   );

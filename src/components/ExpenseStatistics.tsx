@@ -1,22 +1,34 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import ChartDataLabels, { Context } from "chartjs-plugin-datalabels";
 import CardContainer from "./common/CardContainer";
+import { getExpenseStatisticsData, ExpenseStatisticsData } from "../api";
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const ExpenseStatistics = () => {
-  const data = {
-    labels: ["Entertainment", "Bill Expense", "Others", "Investment"],
-    datasets: [
-      {
-        data: [30, 15, 35, 20],
-        backgroundColor: ["#343C6A", "#FC7900", "#232323", "#396AFF"],
-        offset: [30, 40, 10, 0],
-      },
-    ],
-  };
+  const [chartData, setChartData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data: ExpenseStatisticsData = await getExpenseStatisticsData();
+
+      setChartData({
+        labels: data.labels,
+        datasets: [
+          {
+            data: data.data,
+            backgroundColor: data.backgroundColors,
+            offset: data.offsets,
+          },
+        ],
+      });
+    };
+
+    fetchData();
+  }, []);
 
   const options = {
     responsive: true,
@@ -60,7 +72,11 @@ const ExpenseStatistics = () => {
   return (
     <CardContainer title="Expense Statistics">
       <div className="bg-white h-72 flex items-center justify-center rounded-2xl">
-        <Pie data={data} options={options} />
+        {chartData ? (
+          <Pie data={chartData} options={options} />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </CardContainer>
   );

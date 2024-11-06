@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from "react";
 import CardContainer from "./common/CardContainer";
 import { Bar } from "react-chartjs-2";
 import {
@@ -9,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { getWeeklyActivityData, WeeklyActivityData } from "../api";
 
 ChartJS.register(
   CategoryScale,
@@ -20,27 +23,37 @@ ChartJS.register(
 );
 
 const WeeklyActivityChart = () => {
-  const data = {
-    labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
-    datasets: [
-      {
-        label: "Withdraw",
-        data: [400, 100, 150, 200, 250, 200, 150],
-        backgroundColor: "#232323",
-        borderRadius: 30,
-        borderSkipped: false,
-        maxBarThickness: 18,
-      },
-      {
-        label: "Deposit",
-        data: [300, 200, 300, 400, 480, 400, 300],
-        backgroundColor: "#396AFF",
-        borderRadius: 30,
-        borderSkipped: false,
-        maxBarThickness: 18,
-      },
-    ],
-  };
+  const [chartData, setChartData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data: WeeklyActivityData = await getWeeklyActivityData();
+
+      setChartData({
+        labels: data.labels,
+        datasets: [
+          {
+            label: "Withdraw",
+            data: data.withdrawData,
+            backgroundColor: "#232323",
+            borderRadius: 30,
+            borderSkipped: false,
+            maxBarThickness: 18,
+          },
+          {
+            label: "Deposit",
+            data: data.depositData,
+            backgroundColor: "#396AFF",
+            borderRadius: 30,
+            borderSkipped: false,
+            maxBarThickness: 18,
+          },
+        ],
+      });
+    };
+
+    fetchData();
+  }, []);
 
   const options = {
     responsive: true,
@@ -89,7 +102,11 @@ const WeeklyActivityChart = () => {
   return (
     <CardContainer title="Weekly Activity" className="col-span-2">
       <div className="bg-white p-8 h-72 rounded-2xl">
-        <Bar data={data} options={options} />
+        {chartData ? (
+          <Bar data={chartData} options={options} />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </CardContainer>
   );

@@ -58,6 +58,7 @@ const QuickTransfer: React.FC = () => {
             <button
               onClick={handlePrev}
               className="absolute left-0 top-1/2 transform -translate-y-1/2 w-[50px] h-[50px] flex items-center justify-center rounded-full bg-white shadow-md hover:bg-primary"
+              aria-label="Previous button"
             >
               <IoIosArrowBack className="text-textSecondary" />
             </button>
@@ -80,6 +81,7 @@ const QuickTransfer: React.FC = () => {
             <button
               onClick={handleNext}
               className="absolute right-0 top-1/2 transform -translate-y-1/2 w-[50px] h-[50px] flex items-center justify-center rounded-full bg-white shadow-md hover:bg-primary"
+              aria-label="Next button"
             >
               <IoIosArrowForward className="text-textSecondary" />
             </button>
@@ -98,7 +100,10 @@ const QuickTransfer: React.FC = () => {
               className="w-full px-4 py-2 md:py-3 pr-24 rounded-full bg-grey text-center focus:border-secondary focus:outline-none"
               defaultValue="525.50"
             />
-            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-secondary text-white px-6 py-2 md:py-3 rounded-full flex items-center space-x-1 hover:text-primary hover:bg-black">
+            <button
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-secondary text-white px-6 py-2 md:py-3 rounded-full flex items-center space-x-1 hover:text-primary hover:bg-black"
+              aria-label="Send money button"
+            >
               <span>Send</span>
               <FaRegPaperPlane />
             </button>
