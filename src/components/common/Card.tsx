@@ -21,57 +21,61 @@ const Card = ({
 }: CardProps) => {
   return (
     <div
-      className={`rounded-3xl w-full max-w-[265px] lg:max-w-[350px] ${
-        plain ? "bg-white" : "bg-primary-gradient"
+      className={`rounded-3xl w-full max-w-[265px] md:max-w-[350px] flex-shrink-0 ${
+        plain ? "bg-white border border-#DFEAF2" : "bg-primary-gradient"
       }`}
     >
-      <div className="px-8 py-4 flex flex-col gap-10">
+      <div className="px-8 py-4 flex flex-col gap-5 md:gap-10">
         <div className="flex justify-between">
           <div className="">
             <p
-              className={`text-12 ${
+              className={`text-11 md:text-12 ${
                 plain ? "text-textSecondary" : "text-white "
               }`}
             >
               Balance
             </p>
             <p
-              className={`text-20 ${plain ? "text-textPrimary" : "text-white"}`}
+              className={`text-16 md:text:20 ${
+                plain ? "text-textPrimary" : "text-white"
+              }`}
             >
               {formatCurrency(balance)}
             </p>
           </div>
           {plain ? (
-            <img src={cardChip2} alt="Card Chip" className="w-9 h-9" />
+            <img src={cardChip2} alt="Card Chip" className="w-7 h-7" />
           ) : (
-            <img src={cardChip} alt="Card Chip" className="w-9 h-9" />
+            <img src={cardChip} alt="Card Chip" className="w-7 h-7" />
           )}
         </div>
-        <div className="flex gap-14 justify-start items-center mb-6">
+        <div className="flex gap-5 md:gap-14 justify-start items-center mb-1 md:mb-6">
           <div>
             <p
-              className={`text-12 uppercase ${
+              className={`text-10 md:text-12 uppercase ${
                 plain ? "text-textSecondary" : "text-[#FFFFFFB2]"
               }`}
             >
               Card Holder
             </p>
             <p
-              className={`text-15 ${plain ? "text-textPrimary" : "text-white"}`}
+              className={`text-13 md:text-15 ${
+                plain ? "text-textPrimary" : "text-white"
+              }`}
             >
               {cardHolder}
             </p>
           </div>
           <div>
             <p
-              className={`text-12 font-normal uppercase ${
+              className={`text-10 md:text-12 font-normal uppercase ${
                 plain ? "text-textSecondary" : "text-[#FFFFFFB2] "
               }`}
             >
               Valid Thru
             </p>
             <p
-              className={`text-15  ${
+              className={`text-13 md:text-15  ${
                 plain ? "text-textPrimary" : "text-white"
               }`}
             >
@@ -88,7 +92,7 @@ const Card = ({
         }`}
       >
         <p
-          className={`text-22 py-4 ${
+          className={`text-15 md:text-22 py-4 ${
             plain ? "text-textPrimary" : "text-white"
           }`}
         >
@@ -96,9 +100,17 @@ const Card = ({
         </p>
         <div className="flex justify-center items-center">
           {plain ? (
-            <img src={cardSeal} alt="Card Seal" className="w-11 h-8" />
+            <img
+              src={cardSeal}
+              alt="Card Seal"
+              className="w-7 h-5 md:w-11 md:h-8"
+            />
           ) : (
-            <img src={cardSeal2} alt="Card Seal" className="w-11 h-8" />
+            <img
+              src={cardSeal2}
+              alt="Card Seal"
+              className="w-7 h-5 md:w-11 md:h-8"
+            />
           )}
         </div>
       </div>

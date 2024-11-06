@@ -15,7 +15,9 @@ const TopBar = () => {
         <div className="flex lg:hidden" onClick={() => setToggleSidebar(true)}>
           <FaBars className="w-5 h-5 md:w-8 md:h-8 text-textPrimary" />
         </div>
-        <h1 className="text-textPrimary text-2xl font-semibold">{pageTitle}</h1>
+        <h1 className="text-textPrimary font-inter font-semibold text-20 md:text-28">
+          {pageTitle}
+        </h1>
         <div className="flex items-center space-x-4 gap-4">
           <div className="relative hidden md:flex">
             <input
