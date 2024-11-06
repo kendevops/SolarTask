@@ -7,7 +7,7 @@ import WeeklyActivityChart from "./WeeklyActivityChart";
 
 const Dashboard = () => {
   return (
-    <div className="px-10 py-5">
+    <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <MyCards />
         <RecentTransactions />
@@ -20,7 +20,7 @@ const Dashboard = () => {
         <QuickTransfer />
         <BalanceHistoryChart />
       </div>
-    </div>
+    </>
   );
 };
 

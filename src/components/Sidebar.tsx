@@ -1,78 +1,75 @@
 import SidebarMenuItem from "./common/SidebarMenuItem";
 import logo from "../assets/logo.svg";
-// import home from "../assets/sidebarIcons/home.svg";
-// import transaction from "../assets/sidebarIcons/transaction.svg";
-// import account from "../assets/sidebarIcons/account.svg";
-// import investment from "../assets/sidebarIcons/account.svg";
-// import creditCard from "../assets/sidebarIcons/account.svg";
-// import loan from "../assets/sidebarIcons/account.svg";
-// import service from "../assets/sidebarIcons/account.svg";
-// import privilege from "../assets/sidebarIcons/account.svg";
-// import setting from "../assets/sidebarIcons/account.svg";
 import { IoIosSettings } from "react-icons/io";
 import { AiFillHome } from "react-icons/ai";
-import { FaUserLarge } from "react-icons/fa6";
-import { FaCreditCard } from "react-icons/fa6";
+import { FaHandHoldingUsd, FaFunnelDollar } from "react-icons/fa";
+import { BsTools } from "react-icons/bs";
+import {
+  FaCreditCard,
+  FaMoneyBillTransfer,
+  FaUserLarge,
+  FaFileInvoiceDollar,
+} from "react-icons/fa6";
 
 const Sidebar = () => {
   return (
     <aside className="hidden lg:block w-64 bg-white h-screen shadow-lg border-r border-r-light">
-      <div className="flex items-center justify-center py-10">
-        <img src={logo} />
+      <div className="flex items-center justify-center py-10 md:w-64 lg:w-full">
+        <img src={logo} alt="logo" />
       </div>
       <div className="">
         <SidebarMenuItem
           name="Dashboard"
           title="Overview"
-          icon={<AiFillHome className="w-5 h-5" />}
+          icon={<AiFillHome className="w-6 h-6" />}
           path="/"
         />
         <SidebarMenuItem
           name="Transactions"
           title="Transactions"
-          icon={<FaCreditCard className="w-5 h-5" />}
+          icon={<FaMoneyBillTransfer className="w-6 h-6" />}
           path="/transactions"
         />
         <SidebarMenuItem
           name="Accounts"
           title="Accounts"
-          icon={<FaUserLarge className="w-5 h-5" />}
+          icon={<FaUserLarge className="w-6 h-6" />}
           path="/accounts"
         />
         <SidebarMenuItem
           name="Investments"
           title="Investments"
-          icon={<FaCreditCard className="w-5 h-5" />}
+          icon={<FaFileInvoiceDollar className="w-6 h-6" />}
           path="/investments"
         />
         <SidebarMenuItem
           name="Credit Cards"
           title="Credit Cards"
-          icon={<FaCreditCard className="w-5 h-5" />}
+          icon={<FaCreditCard className="w-6 h-6" />}
           path="/credit-cards"
         />
         <SidebarMenuItem
           name="Loans"
           title="Loan"
-          icon={<FaCreditCard className="w-5 h-5" />}
+          icon={<FaHandHoldingUsd className="w-6 h-6" />}
           path="/loans"
         />
         <SidebarMenuItem
           name="Services"
           title="Services"
-          icon={<FaCreditCard className="w-5 h-5" />}
+          icon={<BsTools className="w-6 h-6" />}
           path="/services"
         />
         <SidebarMenuItem
           name="My Privileges"
           title="Privileges"
-          icon={<FaCreditCard className="w-5 h-5" />}
+          icon={<FaFunnelDollar className="w-6 h-6" />}
           path="/privileges"
         />
         <SidebarMenuItem
           name="Setting"
           title="Setting"
-          icon={<IoIosSettings className="w-5 h-5" />}
+          icon={<IoIosSettings className="w-6 h-6" />}
           path="/setting"
         />
       </div>
