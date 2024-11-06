@@ -1,50 +1,44 @@
-# React + TypeScript + Vite
+# Financial Dashboard Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Project Overview
 
-Currently, two official plugins are available:
+The task is to build a financial dashboard application with multiple views for the
+user with responsive design and functionality. The main purpose of this application is to display
+an overview of financial activities, card details, transactions, statistics, and user settings.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup Instructions
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Ensure you have Node installed in your system.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+clone the repo 
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+https://github.com/kendevops/SolarTask
 ```
+Navigate to the project directory, install dependencies and start the application
+```bash
+  cd solarTask
+
+  npm install
+
+  npm run dev
+```
+- You can access the deployed version by going to [solar-task](https://solar-task.vercel.app/)
+
+
+
+## Assumptions made during Dev
+
+The following assumptions where made while developing the application.
+
+- I noticed that the background of the `Overview` and that of `Settings` page is not the same on mobile as mobile on Overview is all white and the setting page had gray. I made it all white for both pages for consistency.
+
+- Made use of React Icons for the icons usage all through the application as the right icon package used wasn't shared.
+
+- Built the functionality for toggling the sidebar on mobile and tablet view.
+
+- Made sure the application is fully optimized with lazy loading and react memo where necessary.
+
+- Deployed to vercel by few clicks in connection with my Github account.
+
+- Assumed i am working with a team so i utilized branching and Pull Requests for creating a new feature, updating or fixing bugs.
