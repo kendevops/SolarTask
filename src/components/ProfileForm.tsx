@@ -134,6 +134,7 @@ const ProfileForm = () => {
           <button
             type="submit"
             className="px-8 py-2 bg-secondary text-white rounded-lg hover:bg-black hover:text-primary"
+            aria-label="Save button"
           >
             Save
           </button>

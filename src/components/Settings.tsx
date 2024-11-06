@@ -9,9 +9,21 @@ const Settings = () => {
   return (
     <div className="bg-white p-2 md:p-8 rounded-2xl">
       <Tabs tabs={tabs} activeTab={activeTab} onTabClick={setActiveTab} />
-      {activeTab === "Edit Profile" && <ProfileForm />}
-      {activeTab === "Preferences" && <div>Preferences content here</div>}
-      {activeTab === "Security" && <div>Security content here</div>}
+      {tabs.map((tab) =>
+        activeTab === tab ? (
+          <div
+            key={tab}
+            role="tabpanel"
+            id={`tabpanel-${tab}`}
+            aria-labelledby={`tab-${tab}`}
+            tabIndex={0}
+          >
+            {tab === "Edit Profile" && <ProfileForm />}
+            {tab === "Preferences" && <div>Preferences content here</div>}
+            {tab === "Security" && <div>Security content here</div>}
+          </div>
+        ) : null
+      )}
     </div>
   );
 };
