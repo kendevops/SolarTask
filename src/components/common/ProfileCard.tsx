@@ -26,14 +26,14 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
       <p
         className={`${
           isSelected ? "font-bold" : "font-normal"
-        } text-secondary font-inter text-16`}
+        } text-secondary font-inter text-12 md:text-16`}
       >
         {name}
       </p>
       <p
         className={`${
           isSelected ? "font-bold" : "font-normal"
-        } text-textSecondary font-inter text-15`}
+        } text-textSecondary font-inter text-12 md:text-15`}
       >
         {role}
       </p>

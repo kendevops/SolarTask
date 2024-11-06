@@ -88,17 +88,17 @@ const QuickTransfer: React.FC = () => {
 
         {/* Input and Send button */}
         <div className="flex items-center mt-10">
-          <label className="text-textSecondary text-16 mr-4 font-inter">
+          <label className="text-textSecondary text-12 md:text-16 mr-4 font-inter">
             Write Amount
           </label>
           <div className="relative flex-1">
             <input
               type="text"
               placeholder="0.00"
-              className="w-full px-4 py-3 pr-24 rounded-full bg-grey text-center"
+              className="w-full px-4 py-2 md:py-3 pr-24 rounded-full bg-grey text-center"
               defaultValue="525.50"
             />
-            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-secondary text-white px-6 py-3 rounded-full flex items-center space-x-1 hover:text-primary hover:bg-black">
+            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-secondary text-white px-6 py-2 md:py-3 rounded-full flex items-center space-x-1 hover:text-primary hover:bg-black">
               <span>Send</span>
               <FaRegPaperPlane />
             </button>
