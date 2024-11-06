@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { useApp } from "../../context/AppContext";
 
 interface SidebarItemProps {
@@ -17,13 +18,14 @@ const SidebarMenuItem = ({
   onClick,
 }: SidebarItemProps) => {
   const { setPageTitle } = useApp();
+  const location = useLocation();
 
-  const handleClick = () => {
-    setPageTitle(title);
-    if (onClick) {
-      onClick();
+  useEffect(() => {
+    if (location.pathname === path) {
+      setPageTitle(title);
     }
-  };
+  }, [location.pathname, path, setPageTitle, title]);
+
   return (
     <NavLink
       to={path}
@@ -34,7 +36,7 @@ const SidebarMenuItem = ({
             : "text-accent"
         }`
       }
-      onClick={handleClick}
+      onClick={onClick}
     >
       <div className="mx-4">{icon}</div>
       <span className="font-inter font-medium text-18">{name}</span>
