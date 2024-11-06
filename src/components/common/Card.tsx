@@ -36,7 +36,7 @@ const Card = ({
               Balance
             </p>
             <p
-              className={`text-20 ${plain ? "text-cardAccent" : "text-white"}`}
+              className={`text-20 ${plain ? "text-textPrimary" : "text-white"}`}
             >
               {formatCurrency(balance)}
             </p>
@@ -57,7 +57,7 @@ const Card = ({
               Card Holder
             </p>
             <p
-              className={`text-15 ${plain ? "text-cardAccent" : "text-white"}`}
+              className={`text-15 ${plain ? "text-textPrimary" : "text-white"}`}
             >
               {cardHolder}
             </p>
@@ -71,7 +71,9 @@ const Card = ({
               Valid Thru
             </p>
             <p
-              className={`text-15  ${plain ? "text-cardAccent" : "text-white"}`}
+              className={`text-15  ${
+                plain ? "text-textPrimary" : "text-white"
+              }`}
             >
               {expiry}
             </p>
@@ -86,7 +88,9 @@ const Card = ({
         }`}
       >
         <p
-          className={`text-22 py-4 ${plain ? "text-cardAccent" : "text-white"}`}
+          className={`text-22 py-4 ${
+            plain ? "text-textPrimary" : "text-white"
+          }`}
         >
           {cardNumber}
         </p>

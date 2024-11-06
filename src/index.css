@@ -28,12 +28,13 @@
   }
 
   .text-18 {
-    @apply text-[18px] leading-[24px];
+    @apply text-[18px] leading-[21.78px];
   }
 
   .text-20 {
     @apply text-[20px] leading-[24px];
   }
+  
   .text-22 {
     @apply text-[22px] leading-[26.4px];
   }
@@ -44,22 +45,6 @@
 
   .text-26 {
     @apply text-[26px] leading-[34px];
-  }
-
-  .text-30 {
-    @apply text-[30px] leading-[40px];
-  }
-
-  .text-32 {
-    @apply text-[2rem] leading-[2.5rem];
-  }
-
-  .text-36 {
-    @apply text-[36px] leading-[44px];
-  }
-
-  .text-40 {
-    @apply text-[40px] leading-[52px];
   }
 }
 

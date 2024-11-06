@@ -17,11 +17,14 @@ export default {
         grey: "#EDF1F7",
         textPrimary: "#343C6A",
         textSecondary: "#718EBF",
-        cardAccent: "#343C6A",
       },
       fontFamily: {
         lato: ["Lato", "sans-serif"],
         inter: ["Inter", "sans-serif"],
+      },
+      spacing: {
+        6.5: "1.563rem",
+        13: "3.125rem",
       },
     },
   },

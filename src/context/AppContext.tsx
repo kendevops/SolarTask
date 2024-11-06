@@ -22,6 +22,8 @@ interface DashboardContextProps {
   transactions: Transaction[];
   pageTitle: string;
   setPageTitle: (title: string) => void;
+  toggleSidebar: boolean;
+  setToggleSidebar: (toggle: boolean) => void;
 }
 
 const AppContext = createContext<DashboardContextProps | undefined>(undefined);
@@ -32,6 +34,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [cards, setCards] = useState<Card[]>([]);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [pageTitle, setPageTitle] = useState("Overview");
+  const [toggleSidebar, setToggleSidebar] = useState(false);
 
   useEffect(() => {
     // Mock fetching data
@@ -73,7 +76,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <AppContext.Provider
-      value={{ cards, transactions, pageTitle, setPageTitle }}
+      value={{
+        cards,
+        transactions,
+        pageTitle,
+        setPageTitle,
+        toggleSidebar,
+        setToggleSidebar,
+      }}
     >
       {children}
     </AppContext.Provider>
@@ -84,6 +94,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useApp = () => {
   const context = useContext(AppContext);
   if (!context)
-    throw new Error("useDashboard must be used within a DashboardProvider");
+    throw new Error("useApp must be used within an AppProvider");
   return context;
 };
